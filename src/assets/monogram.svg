@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <pattern id="jb-grid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0v22" stroke="#5EA3A3" stroke-opacity=".16" fill="none"/></pattern>
+    <radialGradient id="jb-light"><stop stop-color="#1F4D5A"/><stop offset="1" stop-color="#142A37"/></radialGradient>
+    <linearGradient id="jb-ink" x2=".7" y2="1"><stop stop-color="#D9F1EF"/><stop offset="1" stop-color="#83B5B5"/></linearGradient>
+    <path id="jb-letters" d="M114 148h95v125l-42 43h-56l-29-29v-26h34v14l12 12h25l24-24v-86h-63z M249 148h96l32 32v37l-17 17 26 25v28l-29 29H249zm34 29v42h52l11-11v-19l-12-12zm0 70v40h61l12-12v-12l-16-16z"/>
+  </defs>
+  <path fill="url(#jb-light)" d="M0 0h520v440H0z"/>
+  <path fill="url(#jb-grid)" d="M0 0h520v440H0z"/>
+  <g fill="none" stroke="#5EA3A3">
+    <circle cx="260" cy="220" r="163" opacity=".35"/>
+    <circle cx="260" cy="220" r="184" stroke-dasharray="2 6" opacity=".38"/>
+    <g class="monogram-orbit">
+      <g transform="rotate(-28 260 220)">
+        <ellipse cx="260" cy="220" rx="213" ry="77" opacity=".54"/>
+        <circle cx="473" cy="220" r="3.3" fill="#9BCAC6" stroke="none"/>
+      </g>
+    </g>
+    <g class="monogram-satellite" fill="#9BCAC6" stroke="none" opacity=".82">
+      <circle cx="413" cy="164" r="3.1"/>
+    </g>
+    <path d="M260 27v386M45 220h430M57 110h39v20h28m276 184h26v16h38M52 353h57v-20m324-206h-28v-17h-40" stroke-dasharray="4 5" opacity=".43"/>
+    <path d="M28 68V28h40m384 0h40v40m0 304v40h-40m-384 0H28v-40" opacity=".8"/>
+    <path d="M81 115h14m-7-7v14m345 216h14m-7-7v14M408 91h14m-7-7v14m-303 268h14m-7-7v14" opacity=".68"/>
+  </g>
+  <g transform="translate(27 -8)" fill-rule="evenodd">
+    <use href="#jb-letters" fill="#0F1F2B" stroke="#5EA3A3" stroke-width="1" transform="translate(15 15)" opacity=".72"/>
+    <use href="#jb-letters" fill="#153743" stroke="#5EA3A3" stroke-width="1" transform="translate(9 9)"/>
+    <use href="#jb-letters" fill="url(#jb-ink)" stroke="#D9F1EF" stroke-width=".9"/>
+    <path d="M114 148h95v125l-42 43h-56m138-168h96l32 32m-128 136h108" fill="none" stroke="#F4FBFA" stroke-width="2" opacity=".48"/>
+  </g>
+  <g fill="#9BCAC6"><circle cx="138" cy="158" r="3"/><circle cx="422" cy="137" r="3"/><circle cx="122" cy="327" r="2"/></g>
+</svg>

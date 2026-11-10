@@ -1,0 +1,42 @@
+import { ArrowUpRight, Folder } from 'lucide-react'
+import { FeaturedProject, ProjectCard } from '../components/ProjectCard'
+import { SectionHeading, TechBadge } from '../components/Primitives'
+import { portfolio } from '../data/portfolio'
+import { useProjectDetails } from '../hooks/useProjectDetails'
+import { useLanguage } from '../i18n/Language'
+
+export function Projects() {
+  const { t } = useLanguage()
+  const { openId, toggle } = useProjectDetails()
+  const [featured, ...projects] = portfolio.projects
+  return (
+    <section className="container section projects" id="construo" aria-labelledby="projects-title" tabIndex={-1}>
+      <SectionHeading id="projects-title" number="02" title={t.sections.construo.title} />
+      <div className="project-grid">
+        <FeaturedProject project={featured} open={openId === featured.id} onToggle={() => toggle(featured.id)} />
+        {projects.map(project => <ProjectCard key={project.id} project={project} open={openId === project.id} onToggle={() => toggle(project.id)} />)}
+      </div>
+    </section>
+  )
+}
+
+export function AdditionalProjects() {
+  const { locale, t } = useLanguage()
+  return (
+    <section className="container section" id="projetos" aria-labelledby="additional-title" tabIndex={-1}>
+      <SectionHeading id="additional-title" number="03" title={t.sections.projetos.title} />
+      {portfolio.additionalProjects.length ? (
+        <ul className="archive">
+          {portfolio.additionalProjects.map(project => (
+            <li className="archive-row" key={project.title.pt}>
+              <div><h3>{project.title[locale]}</h3><p>{project.description[locale]}</p></div>
+              <span>{project.category[locale]}</span>
+              <div className="tag-list">{project.stack.map(tech => <TechBadge key={tech}>{tech}</TechBadge>)}</div>
+              {project.link && <a className="text-link" href={project.link.href}>{project.link.label}<ArrowUpRight size={16} aria-hidden="true" /></a>}
+            </li>
+          ))}
+        </ul>
+      ) : <p className="archive-empty"><Folder size={21} aria-hidden="true" />{t.moreEmpty}</p>}
+    </section>
+  )
+}
