@@ -1,71 +1,104 @@
-import { Binary, Code2, Layers3, Monitor, Smartphone, Zap } from 'lucide-react'
-import { SectionHeading, TerminalLabel } from '../components/Primitives'
+import { ArrowRight, Binary, FlaskConical, Play, RotateCcw, Search, Waypoints } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { InteractiveButton, SectionHeading } from '../components/Primitives'
 import { portfolio } from '../data/portfolio'
 import { useLanguage } from '../i18n/Language'
+import { journey } from '../i18n/journey'
+import '../styles/journey.css'
 
-const icons = { web: Monitor, code: Code2, build: Zap, style: Layers3, mobile: Smartphone }
+function LuaExample() {
+  const { locale } = useLanguage()
+  const t = journey[locale]
+  const [stage, setStage] = useState(0)
+  const [running, setRunning] = useState(false)
 
-export function TechStack() {
-  const { locale, t } = useLanguage()
+  useEffect(() => {
+    if (!running) return
+    const timer = window.setTimeout(() => {
+      setStage(stage + 1)
+      if (stage === 1) setRunning(false)
+    }, 650)
+    return () => window.clearTimeout(timer)
+  }, [running, stage])
+
   return (
-    <section className="container section" id="stack" aria-labelledby="stack-title" tabIndex={-1}>
-      <SectionHeading id="stack-title" number="04" title={t.sections.stack.title} />
-      <div className="tech-groups">
-        {portfolio.technologies.map(({ group, items }) => (
-          <div className="tech-group" key={group.pt}>
-            <h3>{group[locale]}</h3>
-            <ul>
-              {items.map(({ name, icon }) => {
-                const Icon = icons[icon]
-                return <li key={name} translate="no"><Icon size={20} aria-hidden="true" />{name}</li>
-              })}
-            </ul>
-          </div>
-        ))}
+    <figure className="journey-lua" aria-labelledby="journey-lua-title">
+      <figcaption id="journey-lua-title">{t.luaTitle}</figcaption>
+      <div className="journey-console">
+        <div className="journey-console-bar"><span className="journey-console-lights" aria-hidden="true">● ● ●</span><span translate="no">task.lua</span></div>
+        <pre translate="no"><code><span>local</span>{' state = "waiting"\n\n'}<span>local function</span>{' update(event)\n  '}<span>if</span>{' event == "start" '}<span>then</span>{'\n    state = "active"\n  '}<span>elseif</span>{' event == "finish" '}<span>then</span>{'\n    state = "done"\n  '}<span>end</span>{'\n  '}<span>return</span>{' state\n'}<span>end</span></code></pre>
+        <div className="journey-console-output" role="status">
+          {t.luaStates.slice(0, stage + 1).map(line => <p key={line}><span aria-hidden="true">&gt; </span>{line}</p>)}
+        </div>
+        <div className="journey-console-actions">
+          <InteractiveButton variant="primary" disabled={running} onClick={() => { setStage(0); setRunning(true) }}>
+            <Play size={16} aria-hidden="true" />{running ? t.luaRunning : t.luaStart}
+          </InteractiveButton>
+          <InteractiveButton onClick={() => { setStage(0); setRunning(false) }}>
+            <RotateCcw size={16} aria-hidden="true" />{t.luaReset}
+          </InteractiveButton>
+        </div>
       </div>
-    </section>
-  )
-}
-
-export function TimelineItem({ title, description, date }: { title: string; description: string; date?: string }) {
-  const { t } = useLanguage()
-  const yearOnly = date?.length === 4
-  const yearMonth = date?.length === 7
-  const parsed = date ? new Date(yearOnly ? date + '-01-01' : yearMonth ? date + '-01' : date) : null
-  const validDate = parsed && Number.isFinite(parsed.valueOf())
-  const formatted = validDate ? new Intl.DateTimeFormat(t.locale, {
-    year: 'numeric', month: yearOnly ? undefined : 'long', day: yearOnly || yearMonth ? undefined : 'numeric', timeZone: 'UTC',
-  }).format(parsed) : null
-
-  return (
-    <li className="timeline-item">
-      <TerminalLabel>{formatted ? <time dateTime={date}>{formatted}</time> : t.datePending}</TerminalLabel>
-      <div><h3>{title}</h3><p>{description}</p></div>
-    </li>
+      <p className="journey-lua-caption">{t.luaCaption}</p>
+    </figure>
   )
 }
 
 export function Timeline() {
   const { locale, t } = useLanguage()
-  const entries = [...portfolio.experience].sort((a, b) => (a.date ?? '9999').localeCompare(b.date ?? '9999'))
+  const copy = journey[locale]
   return (
     <section className="container section" id="trajetoria" aria-labelledby="timeline-title" tabIndex={-1}>
       <SectionHeading id="timeline-title" number="05" title={t.sections.trajetoria.title} />
-      <ol className="timeline">
-        {entries.map(entry => <TimelineItem key={entry.title.pt} title={entry.title[locale]} description={entry.description[locale]} date={entry.date} />)}
-      </ol>
+      <div className="journey-panel">
+        <div className="journey-intro">
+          <p className="journey-display">{copy.journeyTitle[0]}<br /><span>{copy.journeyTitle[1]}</span></p>
+          <p>{copy.journeyIntro}</p>
+        </div>
+        <div className="journey-grid">
+          <ol className="journey-list" role="list">
+            {copy.milestones.map(({ label, date, title, text, tags }) => (
+              <li className="journey-milestone" key={label}>
+                {date ? <time dateTime={date}>{label}</time> : <span>{label}</span>}
+                <h3>{title}</h3>
+                <p>{text}</p>
+                {tags && <ul className="journey-tags" role="list">{tags.map(tag => <li key={tag} translate="no">{tag}</li>)}</ul>}
+              </li>
+            ))}
+          </ol>
+          <LuaExample />
+        </div>
+      </div>
     </section>
   )
 }
 
+const thinkingIcons = [Search, FlaskConical, Waypoints]
+
 export function About() {
   const { locale, t } = useLanguage()
+  const copy = journey[locale]
   return (
     <section className="container section" id="sobre" aria-labelledby="about-title" tabIndex={-1}>
       <SectionHeading id="about-title" number="06" title={t.sections.sobre.title} />
       <div className="about-grid">
         <div className="about-art" aria-hidden="true"><Binary size={57} strokeWidth={1.15} /><span>{portfolio.initials}</span></div>
-        <div className="about-copy">{portfolio.about.map(paragraph => <p key={paragraph.pt}>{paragraph[locale]}</p>)}</div>
+        <div className="about-copy">
+          <p>{copy.about}</p>
+          <h3 className="thinking-title">{copy.thinkingTitle}</h3>
+          <ol className="thinking-steps" role="list">
+            {copy.thinkingSteps.map((step, index) => {
+              const Icon = thinkingIcons[index]
+              return (
+                <li key={step}>
+                  <Icon size={19} aria-hidden="true" />
+                  {step}
+                  {index < copy.thinkingSteps.length - 1 && <ArrowRight className="thinking-arrow" size={16} aria-hidden="true" />}
+                </li>
+              )
+            })}
+          </ol>
+        </div>
       </div>
     </section>
   )

@@ -1,16 +1,17 @@
-import { ArrowDown, Download, MapPin, Pause, Play, Terminal } from 'lucide-react'
+import { ArrowDown, MapPin, Pause, Play, Terminal } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import monogram from '../assets/monogram.svg?raw'
 import { portfolio } from '../data/portfolio'
 import { publicAsset } from '../data/paths'
 import { useLanguage } from '../i18n/Language'
-import { CopyButton } from '../components/CopyButton'
+import { journey } from '../i18n/journey'
 import { NetworkBackground } from '../components/NetworkBackground'
 import { PortugalClock } from '../components/PortugalClock'
 import { InteractiveButton, SocialLink, TerminalLabel } from '../components/Primitives'
 
 export function Hero() {
   const { locale, t } = useLanguage()
+  const copy = journey[locale]
   const [paused, setPaused] = useState(false)
   const [reduced, setReduced] = useState(false)
 
@@ -29,12 +30,13 @@ export function Hero() {
         <div className="hero-content">
           <TerminalLabel><Terminal size={16} aria-hidden="true" />{t.portfolio}<span className="terminal-cursor" aria-hidden="true" /></TerminalLabel>
           <h1 id="hero-title" translate="no">{portfolio.name}</h1>
-          <p className="hero-headline">{portfolio.headline[locale]}</p>
-          <p className="hero-description">{portfolio.subtitle[locale]}</p>
+          <p className="hero-headline">{copy.heroHeadline}</p>
+          <p className="hero-description">{copy.heroIntro}</p>
+          <p className="hero-question"><Terminal size={16} aria-hidden="true" />{copy.question}</p>
           <div className="hero-actions">
             <InteractiveButton href="#construo" variant="primary">{t.viewProjects}<ArrowDown size={17} aria-hidden="true" /></InteractiveButton>
-            {portfolio.email && <CopyButton email={portfolio.email} />}
-            {portfolio.cv && <InteractiveButton href={publicAsset(portfolio.cv)} download><Download size={17} aria-hidden="true" />{t.cv}</InteractiveButton>}
+            <InteractiveButton href="#trajetoria">{t.sections.trajetoria.title}</InteractiveButton>
+            <InteractiveButton href="#contacto">{t.sections.contacto.title}</InteractiveButton>
             {portfolio.socials.map(link => <SocialLink link={link} key={link.href} />)}
           </div>
         </div>

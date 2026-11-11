@@ -1,5 +1,7 @@
 import { ArrowUpRight, Folder } from 'lucide-react'
 import { FeaturedProject, ProjectCard } from '../components/ProjectCard'
+import { ProjectGallery } from '../components/ProjectGallery'
+import { EscalaDemo } from '../components/EscalaDemo'
 import { SectionHeading, TechBadge } from '../components/Primitives'
 import { ForLifeCaseStudy } from './ForLifeCaseStudy'
 import { ForLifeIllustration } from '../components/ForLifeSimulator'
@@ -15,8 +17,14 @@ export function Projects() {
     <section className="container section projects" id="construo" aria-labelledby="projects-title" tabIndex={-1}>
       <SectionHeading id="projects-title" number="02" title={t.sections.construo.title} />
       <div className="project-grid">
-        <FeaturedProject project={featured} open={openId === featured.id} onToggle={() => toggle(featured.id)} />
-        {projects.map(project => <ProjectCard key={project.id} project={project} open={openId === project.id} onToggle={() => toggle(project.id)} />)}
+        <FeaturedProject project={featured} open={openId === featured.id} onToggle={() => toggle(featured.id)}>
+          {openId === featured.id && <EscalaDemo />}
+        </FeaturedProject>
+        {projects.map(project => (
+          <ProjectCard key={project.id} project={project} open={openId === project.id} onToggle={() => toggle(project.id)}>
+            {project.images.length > 1 && openId === project.id && <ProjectGallery images={project.images} title={project.title} />}
+          </ProjectCard>
+        ))}
       </div>
     </section>
   )

@@ -27,12 +27,10 @@ npm test
 
 ## Editar o conteúdo
 
-O ficheiro [`src/data/portfolio.ts`](src/data/portfolio.ts) reúne o perfil, a biografia bilingue, o email, o CV, as redes sociais, os projetos, o percurso e a stack.
-
-- Coloca o avatar, o CV e as capturas aprovadas em `public/`. Usa caminhos como `'media/cv.pdf'` e `'media/escalas.webp'`. Ao adicionar uma captura, atualiza o texto alternativo em PT e EN.
-- Preenche `email` e `socials` com os teus contactos públicos. O site apresenta as respetivas ações quando os dados existem.
-- Preenche `status`, `technologies` e `links` dos projetos com dados confirmados. As três imagens iniciais são ilustrações conceptuais. Para a trajetória, usa datas ISO (`AAAA`, `AAAA-MM` ou `AAAA-MM-DD`).
-- As traduções da interface estão em [`src/i18n/translations.ts`](src/i18n/translations.ts). Os metadados em português estão em [`index.html`](index.html). A imagem de partilha está em `public/partilha.png`.
+- O avatar, as redes sociais e o cartão ForLife estão em [`src/data/portfolio.ts`](src/data/portfolio.ts). Os quatro casos de estudo principais estão em [`src/data/projects.ts`](src/data/projects.ts).
+- Os contactos e o PDF do currículo são configurados em [`src/data/contact.ts`](src/data/contact.ts). Coloca o PDF original e as capturas aprovadas em `public/media/`. Preenche o texto alternativo das capturas em PT e EN.
+- Os grupos de tecnologias estão em [`src/data/technology.ts`](src/data/technology.ts). Os logótipos são locais e têm [atribuição e licença](src/assets/technology).
+- Os textos de início, percurso e apresentação estão em [`src/i18n/journey.ts`](src/i18n/journey.ts). Os textos da interface estão em [`src/i18n/translations.ts`](src/i18n/translations.ts) e os metadados iniciais em [`index.html`](index.html).
 
 ## Publicar
 
@@ -56,4 +54,5 @@ O ficheiro [`src/data/portfolio.ts`](src/data/portfolio.ts) reúne o perfil, a b
 
 - [Investigação e direção visual](docs/direcao-visual.md)
 - [Capturas e resultados dos testes](docs/validacao.md)
+- [Auditoria editorial da atualização v2](docs/editorial-audit.md)
 - [Licença SIL Open Font License de Space Mono](src/assets/fonts/OFL.txt)

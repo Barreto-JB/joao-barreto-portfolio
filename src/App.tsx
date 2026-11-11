@@ -1,10 +1,12 @@
 import { LanguageSwitch } from './components/LanguageSwitch'
 import { FloatingDock } from './components/FloatingDock'
+import { RadioPlayer } from './components/RadioPlayer'
 import { portfolio } from './data/portfolio'
 import { LanguageProvider, useLanguage } from './i18n/Language'
 import { Hero } from './sections/Hero'
 import { AdditionalProjects, Projects } from './sections/Projects'
-import { About, TechStack, Timeline } from './sections/ProfileSections'
+import { About, Timeline } from './sections/ProfileSections'
+import { TechStack } from './sections/TechStack'
 import { Contact, Footer } from './sections/Contact'
 
 function PortfolioPage() {
@@ -18,6 +20,7 @@ function PortfolioPage() {
           <LanguageSwitch />
         </div>
       </header>
+      <RadioPlayer />
       <main id="conteudo" tabIndex={-1}>
         <Hero />
         <Projects />

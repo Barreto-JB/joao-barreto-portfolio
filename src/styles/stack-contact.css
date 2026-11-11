@@ -1,0 +1,109 @@
+.stack .tech-groups {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.stack .tech-group ul {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.75rem), 1fr));
+}
+
+.stack .tech-group li {
+  min-height: 3.15rem;
+  background: var(--navy);
+  line-height: 1.35;
+}
+
+.stack .tech-group li > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.tech-logo {
+  display: grid;
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: .25rem;
+  background: #fff8ee;
+}
+
+.tech-logo img {
+  width: 1.375rem;
+  height: 1.375rem;
+  object-fit: contain;
+}
+
+.tech-logo[data-dark="true"] {
+  background: #143031;
+}
+
+.contact .contact-panel {
+  align-items: start;
+  gap: var(--space-5);
+}
+
+.contact .contact-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  justify-content: stretch;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.contact-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-3);
+}
+
+.contact .contact-link {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr) auto;
+  align-items: center;
+  justify-content: initial;
+  gap: var(--space-3);
+  min-width: 0;
+  width: 100%;
+  padding: .65rem .8rem;
+  text-align: left;
+}
+
+.contact-link strong,
+.contact-link small {
+  display: block;
+  line-height: 1.45;
+}
+
+.contact-link small {
+  font-size: .76rem;
+  font-weight: 400;
+  margin-top: .15rem;
+}
+
+.contact-link.action--outline small {
+  color: var(--ink-muted);
+}
+
+@media (min-width: 56rem) {
+  .stack .tech-groups {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+
+  .stack .tech-group:first-child ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact .contact-panel {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 1fr);
+    grid-template-areas:
+      "intro actions"
+      "secondary actions";
+    grid-template-rows: min-content 1fr;
+  }
+
+  .contact-intro { grid-area: intro; }
+  .contact .contact-actions { grid-area: actions; }
+  .contact-secondary { grid-area: secondary; }
+}

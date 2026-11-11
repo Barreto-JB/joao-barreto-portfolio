@@ -1,0 +1,70 @@
+.case-gallery { margin-block: var(--space-6) var(--space-2); min-width: 0; }
+.case-gallery h4 { color: var(--mint); font-weight: 700; }
+.case-gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--space-3); margin-block-start: var(--space-3); }
+.case-gallery-grid li { min-width: 0; }
+.case-gallery-grid figure { display: grid; gap: var(--space-2); margin: 0; }
+.case-gallery-thumb {
+  position: relative;
+  display: grid;
+  width: 100%;
+  padding: var(--space-2);
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--navy);
+  transition: border-color var(--duration-fast);
+}
+.case-gallery-thumb:hover { border-color: var(--interactive-line); }
+.case-gallery-thumb img { width: 100%; height: auto; aspect-ratio: 1.6; object-fit: contain; }
+.case-gallery-thumb svg {
+  position: absolute;
+  inset: auto var(--space-2) var(--space-2) auto;
+  width: 2rem;
+  height: 2rem;
+  padding: .35rem;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--mint);
+}
+.case-gallery figcaption { color: var(--ink-muted); font-size: var(--text-small); }
+html:has(.case-gallery-dialog[open]) { overflow: hidden; }
+.case-gallery-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(62rem, calc(100% - 1rem));
+  max-width: none;
+  max-height: calc(100dvh - 1rem);
+  margin: auto;
+  padding: 0;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  background: var(--navy);
+  color: var(--mint);
+  overscroll-behavior: contain;
+}
+.case-gallery-dialog::backdrop { background: #07130eea; }
+.case-gallery-viewer { padding: clamp(.65rem, 2vw, 1.25rem); }
+.case-gallery-viewer header, .case-gallery-controls { display: flex; align-items: center; gap: var(--space-3); }
+.case-gallery-viewer header { justify-content: space-between; margin-block-end: var(--space-2); }
+.case-gallery-viewer figure { margin: 0; }
+.case-gallery-viewer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: max(7.5rem, calc(100dvh - 12rem));
+  object-fit: contain;
+}
+.case-gallery-viewer figcaption { margin-block-start: var(--space-2); }
+.case-gallery-controls { justify-content: center; margin-block-start: var(--space-2); font-size: var(--text-small); }
+.case-gallery-viewer button {
+  display: grid;
+  flex: none;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--mint);
+}
+.case-gallery-viewer button:hover { border-color: var(--interactive-line); }

@@ -1,0 +1,51 @@
+const pt = {
+  heading: 'Da caixa de correio ao calendário',
+  simulated: 'Demonstração com dados fictícios',
+  summary: 'Acompanha o percurso de dois PDFs de exemplo até ao calendário. Seleciona uma etapa para ver os dados que saem dela.',
+  play: 'Executar simulação',
+  resume: 'Continuar simulação',
+  pause: 'Pausar simulação',
+  next: 'Avançar uma etapa',
+  reset: 'Reiniciar simulação',
+  payload: 'Dados de exemplo (JSON)',
+  steps: [
+    ['Receber e-mail', 'Uma mensagem de exemplo chega com dois PDFs anexados.'],
+    ['Identificar anexos', 'O fluxo confirma que recebeu os dois ficheiros esperados. Cada um cobre um conjunto diferente de postos.'],
+    ['Ler linhas', 'A leitura dos PDFs converte cada turno numa linha com data, código, posto e horário.'],
+    ['Procurar código', 'As linhas dos dois ficheiros são reunidas. O calendário usa apenas os turnos associados ao código fictício DEMO-014.'],
+    ['Gerar calendário', 'Os turnos encontrados entram no calendário de junho. Os dias sem turnos ficam marcados como folga.'],
+    ['Ver o dia', 'Seleciona um dia para consultar o estado, o posto e o próximo turno. O avatar acompanha o estado do dia.'],
+  ],
+  work: 'Em serviço',
+  rest: 'Folga',
+  nextShift: 'Próximo turno',
+  noShift: 'Sem mais turnos neste exemplo',
+  locations: { North: 'Zona Norte', South: 'Zona Sul', Parking: 'Parque A' },
+}
+
+const en: typeof pt = {
+  heading: 'From inbox to calendar',
+  simulated: 'Demo with fictional data',
+  summary: 'Follow two sample PDFs from the inbox to the calendar. Select any step to see the data it produces.',
+  play: 'Run simulation',
+  resume: 'Resume simulation',
+  pause: 'Pause simulation',
+  next: 'Advance one step',
+  reset: 'Reset simulation',
+  payload: 'Sample data (JSON)',
+  steps: [
+    ['Receive email', 'A sample message arrives with two PDF attachments.'],
+    ['Identify attachments', 'The workflow checks that both expected files are present. Each one covers a different set of work locations.'],
+    ['Read rows', 'Parsing the PDFs turns each shift into a row containing its date, staff code, location and hours.'],
+    ['Match staff code', 'Rows from both files are combined. The calendar uses the shifts assigned to the fictional code DEMO-014.'],
+    ['Build calendar', 'The matching shifts are added to the June calendar. Days without a shift are marked as days off.'],
+    ['Check the day', 'Choose a day to see its status, location and next shift. The avatar reflects whether it is a working day.'],
+  ],
+  work: 'Working',
+  rest: 'Day off',
+  nextShift: 'Next shift',
+  noShift: 'No more shifts in this example',
+  locations: { North: 'North zone', South: 'South zone', Parking: 'Car park A' },
+}
+
+export const escalaDemoCopy = { pt, en }
