@@ -19,6 +19,9 @@ export type Project = {
   links: PublicLink[]
 }
 type AdditionalProject = {
+  id?: string
+  status?: Localized
+  caseStudy?: { href: string; label: Localized }
   title: Localized
   category: Localized
   description: Localized
@@ -36,7 +39,7 @@ export const portfolio = {
   location: 'Portugal',
   timezone: 'Europe/Lisbon',
   coordinates: '39° N / 8° W',
-  avatar: null as null | { src: string; alt: Localized },
+  avatar: { src: 'jb-avatar.png', alt: l('Ilustração JB com chapéu turquesa e caneca de café', 'JB illustration with a turquoise hat and coffee mug') } as null | { src: string; alt: Localized },
   email: null as string | null,
   cv: null as string | null,
   socials: [] as PublicLink[],
@@ -92,7 +95,18 @@ export const portfolio = {
       links: [],
     },
   ] satisfies Project[],
-  additionalProjects: [] as AdditionalProject[],
+  additionalProjects: [{
+    id: 'forlife-cloud-wallet',
+    title: l('ForLife Cloud Wallet', 'ForLife Cloud Wallet'),
+    category: l('Automação Cloud · Integração de APIs', 'Cloud Automation · API Integration'),
+    description: l(
+      'Sistema de automação que gere reservas de ginásio, valida confirmações e mantém um passe digital na Google Wallet atualizado com o código de acesso.',
+      'A cloud-based automation system that handles gym reservations, verifies booking confirmations and keeps a Google Wallet pass updated with the current access code.',
+    ),
+    status: l('Código privado · Caso de estudo público', 'Private Source · Public Case Study'),
+    stack: ['Google Apps Script', 'Google Sheets', 'ForLife API', 'Google Wallet'],
+    caseStudy: { href: '#forlife-cloud-wallet', label: l('Explorar projeto', 'Explore case study') },
+  }] as AdditionalProject[],
   technologies: [
     { group: l('Neste portefólio', 'In this portfolio'), items: [
       { name: 'React', icon: 'web' },

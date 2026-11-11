@@ -16,17 +16,19 @@
 
 :root {
   color-scheme: dark;
-  --navy: #0F1F2B;
-  --deep-teal: #1F4D5A;
-  --turquoise: #5EA3A3;
-  --mint: #D9F1EF;
-  --white: #F4FBFA;
-  --surface: color-mix(in srgb, var(--navy), var(--deep-teal) 32%);
-  --surface-raised: color-mix(in srgb, var(--navy), var(--deep-teal) 65%);
+  --navy: #0B1B17;
+  --deep-teal: #16332A;
+  --turquoise: #21DDCA;
+  --mint: #FEE6C4;
+  --white: #FFF4E3;
+  --surface: #142C25;
+  --amber: #FFAB42;
+  --forest-border: #27574B;
+  --surface-raised: var(--deep-teal);
   --dock-bg: color-mix(in srgb, var(--navy), var(--deep-teal) 24%);
   --ink-muted: color-mix(in srgb, var(--mint), var(--navy) 21%);
   --ink-accent: color-mix(in srgb, var(--turquoise), var(--mint) 33%);
-  --line: color-mix(in srgb, var(--turquoise) 34%, var(--navy));
+  --line: var(--forest-border);
   --line-strong: color-mix(in srgb, var(--turquoise) 70%, var(--navy));
   --interactive-line: color-mix(in srgb, var(--turquoise) 84%, var(--navy));
   --grid-ink: color-mix(in srgb, var(--turquoise) 11%, transparent);

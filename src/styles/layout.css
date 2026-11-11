@@ -376,3 +376,9 @@
   .hero-actions { margin-top: var(--space-8); }
   .contact-panel { grid-template-columns: minmax(0, 1fr) max-content; align-items: center; }
 }
+
+.profile-art { position:relative; }
+.profile-art:has(.jb-avatar) .profile-monogram { opacity:.63; }
+.profile-art img.jb-avatar { position:absolute; inset:50% auto auto 50%; transform:translate(-50%,-50%); width:clamp(7rem,45%,14rem); height:auto; aspect-ratio:1; border-radius:50%; border:3px solid var(--mint); box-shadow:0 0 0 6px var(--surface-raised),0 0 0 7px var(--line); }
+.action--primary, .dock-link[aria-current], .dock-link[data-current] { background:var(--turquoise); }
+.action--primary:hover { background:var(--mint); }

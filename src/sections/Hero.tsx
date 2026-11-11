@@ -40,11 +40,8 @@ export function Hero() {
         </div>
         <div className="profile">
           <div className="profile-art">
-            {portfolio.avatar ? (
-              <img className="avatar" src={publicAsset(portfolio.avatar.src)} width={520} height={440} alt={portfolio.avatar.alt[locale]} fetchPriority="high" />
-            ) : (
-              <div className="profile-monogram" role="img" aria-label={t.profile} dangerouslySetInnerHTML={{ __html: monogram }} />
-            )}
+            <div className="profile-monogram" role="img" aria-label={t.profile} dangerouslySetInnerHTML={{ __html: monogram }} />
+            {portfolio.avatar && <img className="avatar jb-avatar" src={publicAsset(portfolio.avatar.src)} width={512} height={512} alt={portfolio.avatar.alt[locale]} fetchPriority="high" />}
           </div>
           <div className="profile-meta">
             <span><MapPin size={15} aria-hidden="true" />{portfolio.location}</span>
