@@ -98,7 +98,7 @@ export const projects: [Project, ...Project[]] = [
       },
     ],
     links: [
-      { label: l('Abrir guia', 'Open guide'), href: 'https://barreto-jb.github.io/palacio-gelo-guia/' },
+      { label: l('Abrir guia', 'Open guide'), href: 'https://49c0ddeb-palacio-gelo-guia.imjoaobarreto.workers.dev/#/' },
       { label: source, href: 'https://github.com/Barreto-JB/palacio-gelo-guia' },
     ],
   },
