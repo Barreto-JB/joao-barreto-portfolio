@@ -59,6 +59,7 @@
   --dock-bottom: max(0.65rem, env(safe-area-inset-bottom));
   --dock-clearance: calc(5.75rem + env(safe-area-inset-bottom));
   --radio-top: env(safe-area-inset-top);
+  --desktop-masthead-height: 5rem;
   --radio-height: 4.35rem;
   --radio-end: calc(var(--radio-top) + var(--radio-height));
 }
@@ -108,6 +109,6 @@ button { cursor: pointer; }
 }
 
 @media (min-width: 62.5rem) {
-  html { --radio-top: calc(4.7rem + env(safe-area-inset-top)); --radio-height: 4.6rem; scroll-padding-bottom: 1.5rem; }
+  html { --radio-top: calc(var(--desktop-masthead-height) + env(safe-area-inset-top)); --radio-height: 4.6rem; scroll-padding-bottom: 1.5rem; }
   body { padding-bottom: 1.5rem; }
 }

@@ -2,6 +2,23 @@ import { expect, test } from '@playwright/test'
 
 const titles = ['Morning Coffee', 'Warm Fuzz', 'City Lights', 'A Little Shade', 'Peaceful Drift']
 
+test('keeps the desktop player below the navigation while scrolling', async ({ page }) => {
+  for (const width of [1000, 1280, 1440]) {
+    await page.setViewportSize({ width, height: 900 })
+    await page.goto('/')
+    await page.evaluate(() => window.scrollTo(0, 650))
+    const nav = page.getByRole('navigation')
+    const radio = page.getByRole('complementary', { name: 'Rádio JB' })
+    await expect.poll(async () => {
+      const menu = (await nav.boundingBox())!
+      const player = (await radio.boundingBox())!
+      return menu.y >= 0 && menu.y + menu.height <= player.y
+    }).toBe(true)
+    await radio.getByRole('button', { name: 'Fila de reprodução' }).click()
+    await expect(radio.getByRole('region', { name: 'Fila de reprodução' })).toBeVisible()
+  }
+})
+
 test.use({ launchOptions: { args: ['--autoplay-policy=no-user-gesture-required'] } })
 
 test('starts on entry, plays all five tracks and keeps the controls above the page', async ({ page }) => {

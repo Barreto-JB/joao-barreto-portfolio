@@ -17,6 +17,7 @@
 
 .skip-link:focus { transform: none; }
 
+.site-top { display: contents; }
 .masthead { padding-top: env(safe-area-inset-top); }
 .masthead-inner {
   display: flex;
@@ -367,7 +368,9 @@
 }
 
 @media (min-width: 62.5rem) {
-  .dock { width: max-content; max-width: calc(100% - 12rem); top: calc(0.82rem + env(safe-area-inset-top)); bottom: auto; }
+  .site-top { display: block; position: sticky; top: 0; z-index: 9; background: var(--navy); }
+  .masthead-inner { height: var(--desktop-masthead-height); gap: .5rem; }
+  .dock { position: static; width: auto; margin: 0; }
   .dock-mobile, .dock-menu:popover-open { display: none; }
   .dock-desktop { display: flex; gap: 2px; }
   .dock-link { flex-direction: row; gap: clamp(0.33rem, 0.65vw, 0.55rem); min-height: 44px; padding-inline: clamp(0.45rem, 0.9vw - 0.1rem, 0.85rem); font-size: var(--text-small); }

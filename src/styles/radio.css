@@ -111,6 +111,7 @@
 }
 
 @media (min-width: 62.5rem) {
+  .radio-player { position: static; }
   .radio-bar {
     grid-template-columns: minmax(0, 1fr) minmax(18rem, 2fr) minmax(0, 1fr);
     grid-template-areas: 'track transport tools' 'track position tools';

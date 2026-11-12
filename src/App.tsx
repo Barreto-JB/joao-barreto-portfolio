@@ -14,13 +14,16 @@ function PortfolioPage() {
   return (
     <>
       <a href="#conteudo" className="skip-link">{t.skip}</a>
-      <header className="masthead">
-        <div className="container masthead-inner">
-          <a className="brand" href="#inicio" aria-label={`${portfolio.initials} · ${portfolio.name}`} translate="no"><span aria-hidden="true">{portfolio.initials}<b>.</b></span></a>
-          <LanguageSwitch />
-        </div>
-      </header>
-      <RadioPlayer />
+      <div className="site-top">
+        <header className="masthead">
+          <div className="container masthead-inner">
+            <a className="brand" href="#inicio" aria-label={`${portfolio.initials} · ${portfolio.name}`} translate="no"><span aria-hidden="true">{portfolio.initials}<b>.</b></span></a>
+            <FloatingDock />
+            <LanguageSwitch />
+          </div>
+        </header>
+        <RadioPlayer />
+      </div>
       <main id="conteudo" tabIndex={-1}>
         <Hero />
         <Projects />
@@ -31,7 +34,6 @@ function PortfolioPage() {
         <Contact />
       </main>
       <Footer />
-      <FloatingDock />
     </>
   )
 }
